@@ -1,22 +1,73 @@
-plugins {
-    kotlin("jvm") version "1.8.0"
-}
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
-group = "org.tag.wonder"
-version = "1.0-SNAPSHOT"
+plugins {
+    id("org.springframework.boot") version "3.1.1"
+    id("com.google.protobuf") version "0.9.2"
+    id("java")
+    id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("org.jetbrains.kotlin.plugin.spring") version "1.8.20"
+}
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
+allprojects {
+    repositories {
+        mavenCentral()
+        maven(url = "https://jitpack.io")
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
+subprojects {
+    group = "org.tag.wonder"
+    version = "0.0.1-SNAPSHOT"
+
+    apply(plugin = "java")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+
+    repositories {
+        mavenCentral()
+        maven(url = "https://jitpack.io")
+    }
+
+    tasks {
+        compileJava {
+            sourceCompatibility = "17"
+            targetCompatibility = JavaVersion.VERSION_17.toString()
+        }
+    }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+
+    dependencies {
+        implementation("com.google.guava:guava:29.0-jre")
+        implementation("org.apache.httpcomponents:httpclient:4.5.12")
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+        testImplementation("org.springframework.boot:spring-boot-starter-test") {
+            exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+        }
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom(configurations["annotationProcessor"])
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
-kotlin {
-    jvmToolchain(8)
+tasks.getByName<BootJar>("bootJar") {
+    enabled = false
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = true
 }

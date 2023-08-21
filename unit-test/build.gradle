@@ -3,6 +3,7 @@ plugins {
 }
 
 group 'org.tag.wonder'
+version 'unspecified'
 
 repositories {
     mavenCentral()
