@@ -10,12 +10,12 @@ import org.tagwonder.entities.Tag
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 data class TagDataModel(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null,
+    val id: Long? = null,
 
-    private val contents: String = "",
+    val contents: String = "",
 
     @Column(name = "member_id")
-    private val memberId: Long = 0L
+    val memberId: Long = 0L
 ) {
     fun toEntity(): Tag {
         return Tag(
