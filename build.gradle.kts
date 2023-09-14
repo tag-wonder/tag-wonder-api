@@ -3,6 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     id("org.springframework.boot") version "3.1.1"
     id("com.google.protobuf") version "0.9.2"
+    id("io.freefair.lombok") version "8.0.1"
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.8.20"
     id("org.jetbrains.kotlin.plugin.spring") version "1.8.20"
