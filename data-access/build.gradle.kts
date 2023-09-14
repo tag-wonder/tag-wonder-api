@@ -1,12 +1,14 @@
 plugins {
     checkstyle
     id("org.ec4j.editorconfig") version "0.0.3"
+    id("io.freefair.lombok") version "8.0.1"
     kotlin("jvm") version "1.8.20"
 }
 
 project(":data-access") {
     dependencies {
         implementation(project(":domain-model"))
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
         implementation(
             group = "com.fasterxml.jackson.core",
