@@ -1,6 +1,7 @@
 plugins {
     checkstyle
     id("org.ec4j.editorconfig") version "0.0.3"
+    id("io.freefair.lombok") version "8.0.1"
     kotlin("jvm") version "1.8.20"
 }
 
