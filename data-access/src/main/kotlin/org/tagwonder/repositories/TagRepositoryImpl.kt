@@ -4,9 +4,10 @@ import org.tagwonder.entities.Tag
 import org.tagwonder.mappers.TagDataMapper
 
 class TagRepositoryImpl(
-    private val database: TagJpaRepository,
-    private val mapper: TagDataMapper
+    private val database: TagJpaRepository
 ) : ITagRepository {
+    private val mapper: TagDataMapper = TagDataMapper()
+
     override fun getList(memberId: Long): List<Tag> {
         return database.findAll()
             .map { mapper.toEntity(it) }
