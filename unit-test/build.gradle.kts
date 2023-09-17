@@ -12,6 +12,7 @@ project(":unit-test") {
 
         testImplementation("org.springframework.boot:spring-boot-starter-web")
         testImplementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        testImplementation("com.h2database:h2")
 
         testImplementation(group = "com.fasterxml.jackson.core", name = "jackson-core", version = "2.13.3")
         testImplementation(group = "com.fasterxml.jackson.core", name = "jackson-databind", version = "2.13.3")
