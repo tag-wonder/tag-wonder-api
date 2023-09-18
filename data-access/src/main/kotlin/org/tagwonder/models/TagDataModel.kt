@@ -3,7 +3,6 @@ package org.tagwonder.models
 import jakarta.persistence.*
 import lombok.AccessLevel
 import lombok.NoArgsConstructor
-import org.tagwonder.entities.Tag
 
 @Table(name = "tags")
 @Entity
@@ -16,12 +15,4 @@ data class TagDataModel(
 
     @Column(name = "member_id")
     val memberId: Long = 0L
-) {
-    fun toEntity(): Tag {
-        return Tag(
-          id = this.id!!,
-          contents = this.contents,
-          memberId = this.memberId
-        )
-    }
-}
+)
