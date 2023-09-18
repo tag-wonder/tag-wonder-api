@@ -7,6 +7,7 @@ plugins {
 
 project(":domain-model") {
     dependencies {
+        implementation(project(":contracts"))
     }
     checkstyle {
         configFile = file("../.rules/checkstyle/checkstyle.xml")
