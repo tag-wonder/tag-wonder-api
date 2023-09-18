@@ -8,6 +8,7 @@ plugins {
 project(":data-access") {
     dependencies {
         implementation(project(":domain-model"))
+        implementation(project(":contracts"))
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
         implementation(
