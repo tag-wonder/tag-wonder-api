@@ -8,6 +8,16 @@ plugins {
 
 project(":contracts") {
     dependencies {
+        implementation(
+            group = "com.fasterxml.jackson.core",
+            name = "jackson-core",
+            version = "2.13.3"
+        )
+        implementation(
+            group = "com.fasterxml.jackson.core",
+            name = "jackson-databind",
+            version = "2.13.3"
+        )
     }
     checkstyle {
         configFile = file("../.rules/checkstyle/checkstyle.xml")
