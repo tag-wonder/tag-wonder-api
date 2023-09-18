@@ -14,6 +14,6 @@ data class MemberDataModel(
 
     val email: String = "",
 
-    val nickname: Long = 0L,
+    val nickname: String = "",
     val oAuthProvider: OAuthProvider = OAuthProvider.UNSPECIFIED
 )
