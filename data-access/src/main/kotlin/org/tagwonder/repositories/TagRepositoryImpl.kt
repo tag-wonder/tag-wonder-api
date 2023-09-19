@@ -16,4 +16,8 @@ class TagRepositoryImpl(
     override fun creates(tags: List<Tag>) {
         database.saveAll(tags.map { tag -> mapper.toDataModel(tag) })
     }
+
+    override fun findByTitle(title: String): Tag? {
+        return database.findByTitle(title)
+    }
 }
