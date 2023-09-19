@@ -6,12 +6,21 @@ plugins {
 
 project(":api") {
     dependencies {
+        implementation(project(":contracts"))
+        implementation(project(":domain-model"))
+        implementation(project(":data-access"))
+        implementation(project(":gateway"))
+
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("io.jsonwebtoken:jjwt-api:0.11.5")
         implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
         implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+        implementation("io.springfox:springfox-swagger-ui:3.0.0")
+        implementation("io.springfox:springfox-boot-starter:3.0.0")
+
         runtimeOnly("com.mysql:mysql-connector-j")
 
         implementation(
