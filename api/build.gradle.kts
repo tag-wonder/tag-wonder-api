@@ -21,6 +21,8 @@ project(":api") {
         implementation("io.springfox:springfox-swagger-ui:3.0.0")
         implementation("io.springfox:springfox-boot-starter:3.0.0")
 
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+
         runtimeOnly("com.mysql:mysql-connector-j")
 
         implementation(
