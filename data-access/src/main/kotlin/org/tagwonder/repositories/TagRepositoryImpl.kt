@@ -20,4 +20,8 @@ class TagRepositoryImpl(
     override fun findByTitle(title: String): Tag? {
         return database.findByTitle(title)
     }
+
+    override fun deleteAll() {
+        database.deleteAll()
+    }
 }
