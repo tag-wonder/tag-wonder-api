@@ -11,7 +11,7 @@ data class TagDataModel(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    val contents: String = "",
+    val title: String = "",
 
     @Column(name = "member_id")
     val memberId: Long = 0L

@@ -7,7 +7,7 @@ class TagDataMapper {
     fun toEntity(dataModel: TagDataModel): Tag {
         return Tag(
             id = dataModel.id!!,
-            contents = dataModel.contents,
+            title = dataModel.title,
             memberId = dataModel.memberId
         )
     }
@@ -15,7 +15,7 @@ class TagDataMapper {
     fun toDataModel(entity: Tag): TagDataModel {
         return TagDataModel(
             id = entity.id,
-            contents = entity.contents,
+            title = entity.title,
             memberId = entity.memberId
         )
     }

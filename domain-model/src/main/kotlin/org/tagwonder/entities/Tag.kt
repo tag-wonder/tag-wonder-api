@@ -2,6 +2,6 @@ package org.tagwonder.entities
 
 data class Tag(
     val id: Long? = null,
-    val contents: String,
+    val title: String,
     val memberId: Long
 )
