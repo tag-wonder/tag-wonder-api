@@ -1,11 +1,12 @@
 plugins {
     checkstyle
     id("org.ec4j.editorconfig") version "0.0.3"
-    id("io.freefair.lombok") version "8.0.1"
+    kotlin("jvm") version "1.8.20"
 }
 
 project(":unit-test") {
     dependencies {
+        testImplementation(project(":contracts"))
         testImplementation(project(":domain-model"))
         testImplementation(project(":api"))
         testImplementation(project(":data-access"))
