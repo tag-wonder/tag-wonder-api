@@ -94,7 +94,7 @@ class SpecsCreateTagsCommandExecutor(
 
     @ParameterizedTest
     @AutoSource
-    fun `Sut는 요청 커맨드의 Titles 요소 중 하나라도 길이가 15가 넘을 경우, InvalidCommandException을 발생시킨다`(
+    fun `Sut는 요청 커맨드의 Titles 요소 중 하나라도 글자 수가 15가 넘을 경우, InvalidCommandException을 발생시킨다`(
         title: String,
         memberId: Long
     ) {
@@ -180,5 +180,40 @@ class SpecsCreateTagsCommandExecutor(
         //Assert
         assertThat(actual).isNotNull
         assertThat(actual).isInstanceOf(InvalidRequestException::class.java)
+    }
+
+    @ParameterizedTest
+    @AutoSource
+    fun `Sut는 요청 커맨드의 Titles 배열의 크기가 3개가 넘을 경우, InvalidCommandException을 발생시킨다`(
+        title1: String,
+        title2: String,
+        title3: String,
+        title4: String,
+        memberId: Long,
+        tag: Tag
+    ) {
+        //Arrange
+        val sut = CreateTagsCommandExecutor(tagRepository)
+        val validTitle1 = title1.substring(0 until 10)
+        val validTitle2 = title2.substring(0 until 10)
+        val validTitle3 = title3.substring(0 until 10)
+        val validTitle4 = title4.substring(0 until 10)
+
+        val command = CreateTagsCommand(
+            titles = listOf(validTitle1, validTitle2, validTitle3, validTitle4),
+            memberId = memberId
+        )
+
+        //Act
+        var actual: InvalidCommandException? = null
+        try {
+            sut.execute(command)
+        } catch (e: InvalidCommandException) {
+            actual = e
+        }
+
+        //Assert
+        assertThat(actual).isNotNull
+        assertThat(actual).isInstanceOf(InvalidCommandException::class.java)
     }
 }

@@ -32,12 +32,16 @@ class CreateTagsCommandExecutor(
     }
 
     private fun validCommand(command: CreateTagsCommand) {
+        if(command.titles.size > 3) {
+            throw InvalidCommandException("array of titles is too long")
+        }
+
         if (command.titles.any { it.length > 15}) {
-            throw InvalidCommandException("title is too long")
+            throw InvalidCommandException("length of title is too long")
         }
 
         if(command.titles.hasDuplicate()) {
-            throw InvalidCommandException("title is duplicated")
+            throw InvalidCommandException("element of title is duplicated")
         }
     }
 }
