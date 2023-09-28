@@ -1,9 +1,9 @@
 package org.tagwonder.usecases.commands
 
-import com.healingpaper.solution.domain.exceptions.InvalidCommandException
-import com.healingpaper.solution.domain.exceptions.InvalidRequestException
 import org.tagwonder.commands.CreateTagsCommand
 import org.tagwonder.entities.Tag
+import org.tagwonder.exceptions.InvalidCommandException
+import org.tagwonder.exceptions.InvalidRequestException
 import org.tagwonder.repositories.ITagRepository
 import org.tagwonder.usecases.utils.hasDuplicate
 

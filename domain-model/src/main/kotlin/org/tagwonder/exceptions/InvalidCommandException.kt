@@ -1,4 +1,4 @@
-package com.healingpaper.solution.domain.exceptions
+package org.tagwonder.exceptions
 
 data class InvalidCommandException(
     override val message: String,
