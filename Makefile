@@ -1,4 +1,4 @@
 test:
 	docker-compose up -d
-	./gradlew test:test
+	./gradlew unit-test:test
 	docker-compose down
