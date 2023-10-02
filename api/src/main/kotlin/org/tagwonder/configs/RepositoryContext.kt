@@ -2,9 +2,7 @@ package org.tagwonder.configs
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.tagwonder.repositories.ITagRepository
-import org.tagwonder.repositories.TagJpaRepository
-import org.tagwonder.repositories.TagRepositoryImpl
+import org.tagwonder.repositories.*
 
 @Configuration
 open class RepositoryContext {
@@ -13,5 +11,12 @@ open class RepositoryContext {
         tagJpaRepository: TagJpaRepository
     ): ITagRepository {
         return TagRepositoryImpl(tagJpaRepository)
+    }
+
+    @Bean
+    open fun memberRepository(
+        memberJpaRepository: MemberJpaRepository
+    ): IMemberRepository {
+        return MemberRepositoryImpl(memberJpaRepository)
     }
 }
