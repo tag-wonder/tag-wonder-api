@@ -1,6 +1,6 @@
 package org.tagwonder.entities
 
-import org.tagwonder.OAuthProvider
+import org.tagwonder.oAuth.OAuthProvider
 
 data class Member(
     val id: Long,

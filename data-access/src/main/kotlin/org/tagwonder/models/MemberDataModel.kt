@@ -3,7 +3,7 @@ package org.tagwonder.models
 import jakarta.persistence.*
 import lombok.AccessLevel
 import lombok.NoArgsConstructor
-import org.tagwonder.OAuthProvider
+import org.tagwonder.oAuth.OAuthProvider
 
 @Table(name = "members")
 @Entity
