@@ -1,8 +1,8 @@
-package org.tagwonder
+package org.tagwonder.oAuth.kakao
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class KaKaoTokenResponse(
+data class KakaoTokenResponse(
     @JsonProperty("access_token")
     val accessToken : String,
 

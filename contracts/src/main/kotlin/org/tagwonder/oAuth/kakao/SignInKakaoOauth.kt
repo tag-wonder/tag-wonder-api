@@ -1,4 +1,7 @@
-package org.tagwonder
+package org.tagwonder.oAuth.kakao
+
+import org.tagwonder.oAuth.ISignInOAuth
+import org.tagwonder.oAuth.OAuthProvider
 
 data class SignInKakaoOauth(
     val authorizationCode: String

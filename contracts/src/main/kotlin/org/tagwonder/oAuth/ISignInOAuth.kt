@@ -1,4 +1,4 @@
-package org.tagwonder
+package org.tagwonder.oAuth
 
 
 interface ISignInOAuth {
