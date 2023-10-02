@@ -24,10 +24,6 @@ jobs:
         run: |
           ./gradlew clean build
 
-      - name: Run Unit Tests
-        run: |
-          ./gradlew unit-test:test
-
       - name: Docker Image Build
         run: docker build -t anwjdrbs123/tag-wonder-api-ci .
 
