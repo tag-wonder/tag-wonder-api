@@ -23,3 +23,6 @@ oauth:
       protocol: https
       auth-host: kauth.kakao.com
       api-host: kapi.kakao.com
+
+jwt:
+  secret-key: ${SECRET_KEY}
