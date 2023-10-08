@@ -17,8 +17,14 @@ class TagRepositoryImpl(
         database.saveAll(tags.map { tag -> mapper.toDataModel(tag) })
     }
 
-    override fun findByTitle(title: String): Tag? {
-        return database.findByTitle(title)
+    override fun find(
+        memberId: Long,
+        title: String
+    ): Tag? {
+        return database.findByMemberIdAndTitle(
+            memberId,
+            title
+        )
     }
 
     override fun deleteAll() {

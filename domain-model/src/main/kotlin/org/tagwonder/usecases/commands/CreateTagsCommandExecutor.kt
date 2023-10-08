@@ -25,7 +25,7 @@ class CreateTagsCommandExecutor(
 
     private fun existsTitleInTag(command: CreateTagsCommand) {
         command.titles.forEach {
-            tagRepository.findByTitle(it)?.let {
+            tagRepository.find(command.memberId, it)?.let {
                 throw InvalidRequestException("title already exists")
             }
         }
