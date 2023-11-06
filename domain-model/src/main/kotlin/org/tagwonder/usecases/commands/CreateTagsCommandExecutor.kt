@@ -10,22 +10,22 @@ import org.tagwonder.usecases.utils.hasDuplicate
 class CreateTagsCommandExecutor(
     private val tagRepository: ITagRepository
 ) {
-    fun execute(command: CreateTagsCommand) {
+    fun execute(memberId: Long, command: CreateTagsCommand) {
         validCommand(command)
-        existsTitleInTag(command)
+        existsTitleInTag(memberId, command.titles)
         tagRepository.creates(
             command.titles.map {
                 Tag(
                     title = it,
-                    memberId = command.memberId
+                    memberId = memberId
                 )
             }
         )
     }
 
-    private fun existsTitleInTag(command: CreateTagsCommand) {
-        command.titles.forEach {
-            tagRepository.find(command.memberId, it)?.let {
+    private fun existsTitleInTag(memberId: Long, titles: List<String>) {
+        titles.forEach {
+            tagRepository.find(memberId, it)?.let {
                 throw InvalidRequestException("title already exists")
             }
         }

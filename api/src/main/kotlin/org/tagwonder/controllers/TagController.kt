@@ -19,12 +19,14 @@ class TagController(
     private val createTagsCommandExecutor: CreateTagsCommandExecutor,
     private val getTagsQueryProcessor: GetTagsQueryProcessor
 ) {
-    @PostMapping("/tags")
+    @PostMapping("/members/{memberId}/tags")
     fun createTags(
+        @PathVariable("memberId") memberId: Long,
         @RequestBody command: CreateTagsCommand
     ) {
         try {
             createTagsCommandExecutor.execute(
+                memberId = memberId,
                 command = command
             )
         } catch (e: InvalidCommandException) {
