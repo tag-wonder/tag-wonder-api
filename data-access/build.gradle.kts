@@ -10,7 +10,9 @@ project(":data-access") {
         implementation(project(":domain-model"))
         implementation(project(":contracts"))
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
+        implementation("com.querydsl:querydsl-jpa:5.0.0")
+        implementation("com.querydsl:querydsl-core:5.0.0")
+        annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties["querydsl.version"]}:jpa")
         implementation(
             group = "com.fasterxml.jackson.core",
             name = "jackson-core",
