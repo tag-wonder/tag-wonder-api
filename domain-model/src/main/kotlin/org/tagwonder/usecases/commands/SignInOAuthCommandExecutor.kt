@@ -23,10 +23,10 @@ class SignInOAuthCommandExecutor(
     private fun findOrCreateMember(oAuthInfoResponse: IOAuthInfoResponse): Long {
         return memberRepository.findByEmail(oAuthInfoResponse.getEmail())
             ?.let { it.id }
-            ?: newMember(oAuthInfoResponse)
+            ?: createMember(oAuthInfoResponse)
     }
 
-    private fun newMember(response: IOAuthInfoResponse): Long {
+    private fun createMember(response: IOAuthInfoResponse): Long {
         return memberRepository.create(
             Member(
                 email = response.getEmail(),
