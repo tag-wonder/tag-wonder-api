@@ -10,14 +10,14 @@ import org.tagwonder.usecases.utils.hasDuplicate
 class CreateTagsCommandExecutor(
     private val tagRepository: ITagRepository
 ) {
-    fun execute(memberId: Long, command: CreateTagsCommand) {
+    fun execute(command: CreateTagsCommand) {
         validCommand(command)
-        existsTitleInTag(memberId, command.titles)
+        existsTitleInTag(command.memberId, command.titles)
         tagRepository.creates(
             command.titles.map {
                 Tag(
                     title = it,
-                    memberId = memberId
+                    memberId = command.memberId
                 )
             }
         )

@@ -1,6 +1,5 @@
 package org.tagwonder.commands
 
-data class CreateTagsCommand(
+data class CreateTagsApiCommand(
     val titles: List<String>,
-    val memberId: Long
 )
