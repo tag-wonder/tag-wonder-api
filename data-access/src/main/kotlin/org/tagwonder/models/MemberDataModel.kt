@@ -15,5 +15,7 @@ data class MemberDataModel(
     val email: String = "",
 
     val nickname: String = "",
+
+    @Enumerated(EnumType.STRING)
     val oAuthProvider: OAuthProvider = OAuthProvider.UNSPECIFIED
 )
