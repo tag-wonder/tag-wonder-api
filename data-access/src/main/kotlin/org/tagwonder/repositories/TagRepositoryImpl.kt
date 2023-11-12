@@ -9,7 +9,7 @@ class TagRepositoryImpl(
     private val mapper: TagDataMapper = TagDataMapper()
 
     override fun getList(memberId: Long): List<Tag> {
-        return database.findAll()
+        return database.findAllByMemberId(memberId)
             .map { mapper.toEntity(it) }
     }
 
@@ -24,7 +24,7 @@ class TagRepositoryImpl(
         return database.findByMemberIdAndTitle(
             memberId,
             title
-        )
+        )?.let { mapper.toEntity(it) }
     }
 
     override fun deleteAll() {
