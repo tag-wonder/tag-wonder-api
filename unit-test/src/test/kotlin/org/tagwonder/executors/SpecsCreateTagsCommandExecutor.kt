@@ -160,7 +160,10 @@ class SpecsCreateTagsCommandExecutor(
 
         tagRepository.creates(
             listOf(
-                tag.copy(title = validTitle)
+                tag.copy(
+                    title = validTitle,
+                    memberId = memberId
+                )
             )
         )
 
