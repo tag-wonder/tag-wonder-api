@@ -15,8 +15,7 @@ class GetTagsQueryProcessor(
                 .map {
                     TagContract(
                     id = it.id!!,
-                    title = it.title,
-                    memberId = it.memberId
+                    title = it.title
                 ) }
         )
     }

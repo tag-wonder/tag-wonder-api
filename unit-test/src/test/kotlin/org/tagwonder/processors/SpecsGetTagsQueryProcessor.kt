@@ -46,7 +46,6 @@ class SpecsGetTagsQueryProcessor(
         actual.forEach { actualData ->
             assertThat(actualData.id).isNotNull
             assertThat(actualData.title).isEqualTo(expectedTitle)
-            assertThat(actualData.memberId).isEqualTo(expectedMemberId)
         }
     }
 
