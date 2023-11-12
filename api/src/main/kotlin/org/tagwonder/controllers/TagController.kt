@@ -1,6 +1,6 @@
 package org.tagwonder.controllers
 
-import io.swagger.annotations.ApiOperation
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.tagwonder.commands.CreateTagsApiCommand
@@ -20,7 +20,7 @@ class TagController(
     private val authTokenGenerator: AuthTokenGenerator
 ) {
 
-    @ApiOperation(value = "태그 복수 생성")
+    @Operation(summary = "태그 복수 생성")
     @PostMapping("/tags")
     fun createTags(
         @RequestHeader(value = "Authorization", required = true) authToken: String,
@@ -38,7 +38,7 @@ class TagController(
         }
     }
 
-    @ApiOperation(value = "태그 전체 조회")
+    @Operation(summary = "태그 전체 조회")
     @GetMapping("/tags")
     fun getTags(
         @RequestHeader(value = "Authorization", required = true) authToken: String

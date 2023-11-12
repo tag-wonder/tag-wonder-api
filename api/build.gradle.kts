@@ -18,8 +18,7 @@ project(":api") {
         implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-        implementation("io.springfox:springfox-swagger-ui:3.0.0")
-        implementation("io.springfox:springfox-boot-starter:3.0.0")
+        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 
