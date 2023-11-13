@@ -17,7 +17,8 @@ class CreateTagsCommandExecutor(
             command.titles.map {
                 Tag(
                     title = it,
-                    memberId = command.memberId
+                    memberId = command.memberId,
+                    writer = command.writer ?: null
                 )
             }
         )

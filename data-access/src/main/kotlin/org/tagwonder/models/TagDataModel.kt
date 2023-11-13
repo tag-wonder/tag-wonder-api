@@ -14,5 +14,7 @@ data class TagDataModel(
     val title: String = "",
 
     @Column(name = "member_id")
-    val memberId: Long = 0L
+    val memberId: Long = 0L,
+
+    val writer: String? = ""
 )

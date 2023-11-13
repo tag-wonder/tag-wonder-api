@@ -8,7 +8,8 @@ class TagDataMapper {
         return Tag(
             id = dataModel.id!!,
             title = dataModel.title,
-            memberId = dataModel.memberId
+            memberId = dataModel.memberId,
+            writer = dataModel.writer
         )
     }
 
@@ -16,7 +17,8 @@ class TagDataMapper {
         return TagDataModel(
             id = entity.id,
             title = entity.title,
-            memberId = entity.memberId
+            memberId = entity.memberId,
+            writer = entity.writer
         )
     }
 }
