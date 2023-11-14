@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit
 
 data class KakaoApiClient(
     private val protocol: String,
-    private val host: String,
+    private val authHost: String,
+    private val apiHost: String,
     private val clientId: String,
     private val grantType: String
 ): OAuthApiClient {
@@ -46,7 +47,6 @@ data class KakaoApiClient(
     private fun makeBaseUrl(): String {
         return UriComponentsBuilder.newInstance()
             .scheme(protocol)
-            .host(host)
             .build()
             .toUriString()
     }
@@ -57,7 +57,7 @@ data class KakaoApiClient(
 
     override fun requestAccessToken(request: ISignInOAuth): String {
         return webClient.post()
-            .uri("/oauth2.0/token")
+            .uri("$authHost/oauth/token")
             .bodyValue(
                 request.makeBody() + mapOf(
                     "grant_type" to grantType,
@@ -75,7 +75,7 @@ data class KakaoApiClient(
 
     override fun requestOauthInfo(accessToken: String): IOAuthInfoResponse {
         return webClient.post()
-            .uri("/v2/user/me")
+            .uri("$apiHost/v2/user/me")
             .headers { headers ->  headers.setBearerAuth(accessToken) }
             .bodyValue(
                 mapOf(
