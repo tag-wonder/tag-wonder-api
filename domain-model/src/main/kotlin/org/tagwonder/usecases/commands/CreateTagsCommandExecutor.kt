@@ -5,7 +5,7 @@ import org.tagwonder.entities.Tag
 import org.tagwonder.exceptions.InvalidCommandException
 import org.tagwonder.exceptions.InvalidRequestException
 import org.tagwonder.repositories.ITagRepository
-import org.tagwonder.usecases.utils.hasDuplicate
+import org.tagwonder.utils.hasDuplicate
 
 class CreateTagsCommandExecutor(
     private val tagRepository: ITagRepository

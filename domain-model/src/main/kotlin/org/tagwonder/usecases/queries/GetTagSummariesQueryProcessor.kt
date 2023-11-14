@@ -2,7 +2,7 @@ package org.tagwonder.usecases.queries
 
 import org.tagwonder.queries.*
 import org.tagwonder.repositories.ITagRepository
-import org.tagwonder.usecases.utils.hasDuplicate
+import org.tagwonder.utils.hasDuplicate
 
 class GetTagSummariesQueryProcessor(
     private val tagRepository: ITagRepository
