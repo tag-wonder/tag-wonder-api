@@ -8,6 +8,7 @@ import org.tagwonder.repositories.ITagRepository
 import org.tagwonder.usecases.commands.CreateTagsCommandExecutor
 import org.tagwonder.usecases.commands.SignInOAuthCommandExecutor
 import org.tagwonder.usecases.queries.GetOAuthInfoQueryProcessor
+import org.tagwonder.usecases.queries.GetTagSummariesQueryProcessor
 import org.tagwonder.usecases.queries.GetTagsQueryProcessor
 
 @Configuration
@@ -46,5 +47,12 @@ open class UseCaseContext {
         tagRepository: ITagRepository
     ): GetOAuthInfoQueryProcessor {
         return GetOAuthInfoQueryProcessor(mapOf())
+    }
+
+    @Bean
+    open fun getTagSummariesQueryProcessor(
+        tagRepository: ITagRepository
+    ): GetTagSummariesQueryProcessor {
+        return GetTagSummariesQueryProcessor(tagRepository)
     }
 }
