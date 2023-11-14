@@ -16,5 +16,5 @@ data class TagDataModel(
     @Column(name = "member_id")
     val memberId: Long = 0L,
 
-    val writer: String? = ""
+    val writer: String = ""
 )

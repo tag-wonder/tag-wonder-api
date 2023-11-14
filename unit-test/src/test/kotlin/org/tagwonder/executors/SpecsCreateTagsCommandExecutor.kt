@@ -28,6 +28,7 @@ class SpecsCreateTagsCommandExecutor(
     fun `Sut는 요청 커맨드의 Titles 배열의 갯수만큼 Tag를 만들어야한다`(
         title1: String,
         title2: String,
+        writer: String,
         memberId: Long
     ) {
         //Arrange
@@ -37,7 +38,8 @@ class SpecsCreateTagsCommandExecutor(
                 title1.substring(0 until 10),
                 title2.substring(0 until 10)
             ),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -52,13 +54,15 @@ class SpecsCreateTagsCommandExecutor(
     @AutoSource
     fun `Sut는 요청 커맨드의 Titles 배열의 요소가 Tag의 Title이 되어야한다`(
         title: String,
-        memberId: Long
+        memberId: Long,
+        writer: String
     ) {
         //Arrange
         val sut = CreateTagsCommandExecutor(tagRepository)
         val command = CreateTagsCommand(
             titles = listOf(title.substring(0 until 10)),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -74,13 +78,15 @@ class SpecsCreateTagsCommandExecutor(
     @AutoSource
     fun `Sut는 요청 커맨드의 MemberId가 생성 된 tag의 MemberId에 주입되어야한다`(
         title: String,
+        writer: String,
         memberId: Long
     ) {
         //Arrange
         val sut = CreateTagsCommandExecutor(tagRepository)
         val command = CreateTagsCommand(
             titles = listOf(title.substring(0 until 10)),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -96,13 +102,15 @@ class SpecsCreateTagsCommandExecutor(
     @AutoSource
     fun `Sut는 요청 커맨드의 Titles 요소 중 하나라도 글자 수가 15가 넘을 경우, InvalidCommandException을 발생시킨다`(
         title: String,
+        writer: String,
         memberId: Long
     ) {
         //Arrange
         val sut = CreateTagsCommandExecutor(tagRepository)
         val command = CreateTagsCommand(
             titles = listOf(title.substring(0 until 20)),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -122,6 +130,7 @@ class SpecsCreateTagsCommandExecutor(
     @AutoSource
     fun `Sut는 요청 커맨드의 Titles 요소 간 중복이 있을 경우, InvalidCommandException을 발생시킨다`(
         title: String,
+        writer: String,
         memberId: Long
     ) {
         //Arrange
@@ -131,7 +140,8 @@ class SpecsCreateTagsCommandExecutor(
                 title.substring(0 until 10),
                 title.substring(0 until 10)
             ),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -152,6 +162,7 @@ class SpecsCreateTagsCommandExecutor(
     fun `Sut는 요청 커맨드의 Titles 요소가 해당 멤버의 태그에 같은 타이틀로 영속되어있는 경우, InvalidRequestException을 발생시킨다`(
         title: String,
         memberId: Long,
+        writer: String,
         tag: Tag
     ) {
         //Arrange
@@ -169,7 +180,8 @@ class SpecsCreateTagsCommandExecutor(
 
         val command = CreateTagsCommand(
             titles = listOf(validTitle),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act
@@ -192,6 +204,7 @@ class SpecsCreateTagsCommandExecutor(
         title2: String,
         title3: String,
         title4: String,
+        writer: String,
         memberId: Long,
         tag: Tag
     ) {
@@ -204,7 +217,8 @@ class SpecsCreateTagsCommandExecutor(
 
         val command = CreateTagsCommand(
             titles = listOf(validTitle1, validTitle2, validTitle3, validTitle4),
-            memberId = memberId
+            memberId = memberId,
+            writer = writer
         )
 
         //Act

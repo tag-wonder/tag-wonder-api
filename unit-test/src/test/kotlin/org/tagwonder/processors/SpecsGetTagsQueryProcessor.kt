@@ -29,12 +29,13 @@ class SpecsGetTagsQueryProcessor(
     fun `Sut는 요청 Query의 MemberId에 해당하는 Tag들의 정보로 TagQueryResponse를 반환한다`(
         expectedMemberId: Long,
         expectedTitle: String,
+        expectedWriter: String,
         @Min(1) @Max(10) size: Int
     ) {
         //Arrange
         val sut = GetTagsQueryProcessor(tagRepository)
         val query = GetTagsQuery(expectedMemberId)
-        arrangeTags(expectedMemberId, expectedTitle,  size)
+        arrangeTags(expectedMemberId, expectedTitle, expectedWriter, size)
 
         //Act
         val response = sut.process(query)
@@ -49,13 +50,14 @@ class SpecsGetTagsQueryProcessor(
         }
     }
 
-    private fun arrangeTags(memberId: Long, title: String, size: Int) {
+    private fun arrangeTags(memberId: Long, title: String, writer: String, size: Int) {
         tagRepository.creates(
             (0 until size).map { _ ->
                 Tag(
                     id = null,
                     title = title,
-                    memberId = memberId
+                    memberId = memberId,
+                    writer = writer
                 )
             }
         )

@@ -18,7 +18,7 @@ class CreateTagsCommandExecutor(
                 Tag(
                     title = it,
                     memberId = command.memberId,
-                    writer = command.writer ?: null
+                    writer = command.writer
                 )
             }
         )
