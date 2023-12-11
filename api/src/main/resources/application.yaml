@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+api:
+  url: https://tag-wonder.co.kr
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
